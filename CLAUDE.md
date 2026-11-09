@@ -1,10 +1,10 @@
 # CLAUDE.md
 
-Przewodnik marki [NAZWA MARKI] dla Claude Code: zasady tworzenia rolek, muzyki, zdjęć i grafik w spójnym stylu.
+Przewodnik marki Nieruchomości bez stresu dla Claude Code: zasady tworzenia rolek, muzyki, zdjęć i grafik w spójnym stylu.
 
 ## Opis projektu
 
-- [NAZWA MARKI] to marka w mediach społecznościowych z branży nieruchomości ([MIASTO]).
+- Nieruchomości bez stresu to marka w mediach społecznościowych z branży nieruchomości (Wrocław, województwo dolnośląskie).
 - Segment: rynek średni, czyli mieszkania i domy dla rodzin.
 - Odbiorcy: rodziny szukające mieszkania lub domu; zwracamy się do nich per „Państwo”.
 - To repozytorium nie zawiera kodu. Przechowuje konfigurację i zasoby marki.
@@ -98,8 +98,8 @@ Układ planowany; katalogi będą tworzone w miarę dodawania zasobów.
 
 ## Do uzupełnienia
 
-- [ ] `[NAZWA MARKI]` – nazwa marki.
-- [ ] `[MIASTO]` – miasto działania.
+- [x] Nazwa marki: Nieruchomości bez stresu.
+- [x] Miasto: Wrocław, województwo dolnośląskie.
 - [ ] `[HEX czerni]` – kod koloru czerni.
 - [ ] `[HEX złota]` – kod koloru złota.
 - [ ] `[czcionka nagłówków]` – wybrana czcionka szeryfowa.
