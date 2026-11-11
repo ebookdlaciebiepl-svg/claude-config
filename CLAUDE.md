@@ -29,6 +29,7 @@ Układ planowany; katalogi będą tworzone w miarę dodawania zasobów.
 - `muzyka/` – lista wybranych utworów z Epidemic Sound.
 - `scenariusze/` – scenariusze rolek.
 - `zdjecia/` – zdjęcia referencyjne i wzorcowe ujęcia.
+- `analizy/` – analizy rynku i konkurencji (jest): `2026-11-analiza-konkurencji-wroclaw.md`.
 
 ## Identyfikacja wizualna
 
