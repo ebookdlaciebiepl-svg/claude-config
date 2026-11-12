@@ -71,7 +71,7 @@ Układ planowany; katalogi będą tworzone w miarę dodawania zasobów.
 
 ## Strona internetowa
 
-- Adres: https://nieruchomocibezstresu.netlify.app (hosting Netlify, plan darmowy).
+- Adres: https://nieruchomoscibezstresu.netlify.app (hosting Netlify, plan darmowy).
 - Zawartość: informacje o marce, sekcje „O nas” i „Co zyskują Państwo”, kontakt z przyciskami telefonu i e-maila (dane z sekcji „Baner kontaktowy”).
 - Używaj tego adresu w opisach profili (Instagram, TikTok, Facebook) i w CTA rolek.
 - Własna domena (np. nieruchomoscibezstresu.pl) – do decyzji; można ją podłączyć później w Netlify.
