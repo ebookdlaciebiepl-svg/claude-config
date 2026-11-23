@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kalkulator sprzedaży mieszkania – ile zostanie na rękę? | Nieruchomości bez stresu</title>
+<meta name="description" content="Bezpłatny kalkulator: ile zostanie Panu/Pani na rękę po sprzedaży mieszkania we Wrocławiu i czy grozi 19% podatek przed upływem 5 lat. Maciej Styczek, METROHOUSE Wrocław.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kalkulator sprzedaży mieszkania – ile zostanie na rękę?">
+<meta property="og:description" content="Prowizja, koszty i możliwy 19% podatek przed upływem 5 lat. Wynik od razu, bez zapisywania danych.">
+<meta property="og:image" content="https://poradnik.nieruchomosci-bez-stresu.org/img/og.jpg">
+<meta property="og:locale" content="pl_PL">
+<link rel="icon" href="/img/logo-180.webp">
+<style>body{margin:0}.back{display:inline-flex;align-items:center;gap:10px;color:#d8b46a;text-decoration:none;font-size:14px}.back img{width:48px;height:48px}</style>
+<style>
+.lead{margin-top:22px;padding:20px;border:2px solid #d8b46a;border-radius:16px;background:rgba(216,180,106,.08)}
+.lead h3{margin:0 0 6px;color:#d8b46a;font-size:19px}.lead p{margin:0 0 12px;font-size:14px;opacity:.9}
+.lead input[type=text],.lead input[type=email],.lead input[type=tel]{width:100%;box-sizing:border-box;margin:0 0 10px;padding:12px;border-radius:10px;border:1px solid #6b5a3a;background:#111;color:#f5eede;font:inherit}
+.lead .zg{display:flex;gap:8px;align-items:flex-start;font-size:12px;line-height:1.4;margin:4px 0 12px}
+.lead button{width:100%;padding:14px;border:0;border-radius:999px;background:#ffcd00;color:#0b0b0b;font-weight:800;font-size:16px;cursor:pointer}
+.lead .ok{display:none;color:#d8b46a;font-weight:700}.lead.sent form{display:none}.lead.sent .ok{display:block}
+.hp{position:absolute;left:-9999px}
+#cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 16px;border:1px solid #d8b46a;border-radius:14px;background:#0b0b0b;color:#f5eede;font-size:13px;max-width:720px;margin:0 auto}
+#cookie button{padding:9px 16px;border-radius:999px;border:1px solid #d8b46a;background:transparent;color:#f5eede;cursor:pointer}#cookie .yes{background:#d8b46a;color:#0b0b0b;font-weight:700}
+</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one column of form "ledger" + a sticky result sheet beside it on wide screens; single dark-gold look by design */
+:root{
+  --bg:#0b0a08; --panel:#15130f; --line:#3a3226; --fg:#efe6d2; --muted:#a89a7e;
+  --gold:#d8b46a; --gold2:#f3d79a; --warn:#e8a25a; --ok:#9cc98a;
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding-block:32px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;flex-direction:column;gap:6px;margin-bottom:28px;border-bottom:1px solid var(--line);padding-bottom:20px}
+.eyebrow{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.05;margin:0;color:var(--gold2);text-wrap:balance}
+header p{margin:0;color:var(--muted);max-width:62ch}
+.grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:start}
+@media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}}
+form{display:flex;flex-direction:column;gap:22px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+legend{font-family:var(--display);font-size:22px;color:var(--gold);font-weight:600;margin-bottom:6px;padding:0}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:460px){.row{grid-template-columns:minmax(0,1fr)}}
+label{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--muted);min-width:0}
+.field{display:flex;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:0 12px}
+.field:focus-within{border-color:var(--gold);box-shadow:0 0 0 2px rgba(216,180,106,.25)}
+input{flex:1;min-width:0;background:transparent;border:0;color:var(--fg);font:500 17px var(--body);padding:11px 0;font-variant-numeric:tabular-nums;outline:none}
+.unit{color:var(--muted);font-size:13px;padding-left:8px}
+.hint{font-size:12px;color:var(--muted)}
+.sheet{position:sticky;top:calc(16px + env(safe-area-inset-top,0px));background:var(--panel);border:1px solid var(--gold);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:16px}
+.sheet h2{font-family:var(--display);color:var(--gold);font-size:22px;margin:0;font-weight:600}
+.lines{display:flex;flex-direction:column;gap:8px;margin:0;padding:0}
+.lines div{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.lines dt{color:var(--muted)} .lines dd{margin:0;text-align:right}
+.total{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:2px}
+.total span{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+.total strong{font-family:var(--display);font-size:clamp(34px,6vw,44px);color:var(--gold2);line-height:1.1;font-variant-numeric:tabular-nums}
+.badge{border-radius:8px;padding:18px;font-size:16px;line-height:1.5;border:2px solid;display:flex;flex-direction:column;gap:14px}
+.badge:empty{display:none}
+.badge .bt{font-size:19px;font-weight:700;line-height:1.3}
+.badge.warn{border-color:var(--warn);color:var(--warn);background:rgba(232,162,90,.10)}
+.badge.ok{border-color:var(--ok);color:var(--ok);background:rgba(156,201,138,.08)}
+.badge p{margin:0;color:var(--fg)}
+.free{color:var(--fg);font-size:17px}
+.free strong{color:var(--warn);font-size:20px;white-space:nowrap}
+.tx{margin:0;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(232,162,90,.35);padding-top:14px}
+.tx div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-variant-numeric:tabular-nums}
+.tx dt{color:var(--fg);font-size:16px}
+.tx dd{margin:0;text-align:right;font-weight:700;font-size:19px;color:var(--fg);white-space:nowrap}
+.tx .tax dd{color:var(--warn);font-size:22px}
+.tx .after{border-top:1px solid rgba(232,162,90,.35);padding-top:12px}
+.tx .after dt{font-weight:600}
+.tx .after dd{font-family:var(--display);font-size:30px;color:var(--gold2)}
+.badge .small{font-size:14px;color:var(--muted)}
+.note{font-size:12px;color:var(--muted);margin:0}
+footer{margin-top:36px;border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;color:var(--gold)}
+footer .name{font-family:var(--display);font-size:20px;font-weight:700}
+footer .tel{font-variant-numeric:tabular-nums;letter-spacing:.04em;user-select:all}
+@media (prefers-reduced-motion:no-preference){.total strong{transition:color .2s}}
+</style>
+
+<div class="wrap">
+  <a class="back" href="/"><img src="/logo.webp" alt="Nieruchomości bez stresu – logo" width="48" height="48">← Strona główna</a>
+  <header>
+    <span class="eyebrow">Wrocław · sprzedaż mieszkania</span>
+    <h1>Ile zostanie Panu / Pani na rękę?</h1>
+    <p>Proszę wpisać kwoty ze swojej transakcji. Wynik liczy się od razu. Poniżej są przykładowe wartości do zmiany.</p>
+  </header>
+
+  <div class="grid">
+    <form id="f" autocomplete="off">
+      <fieldset>
+        <legend>Sprzedaż</legend>
+        <label for="cena">Cena sprzedaży
+          <span class="field"><input id="cena" inputmode="decimal" value="650 000"><span class="unit">zł</span></span>
+        </label>
+        <label for="rokS">Rok sprzedaży
+          <span class="field"><input id="rokS" inputmode="numeric" value=""><span class="unit">r.</span></span>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Zakup</legend>
+        <div class="row">
+          <label for="zakup">Cena zakupu
+            <span class="field"><input id="zakup" inputmode="decimal" value="480 000"><span class="unit">zł</span></span>
+          </label>
+          <label for="rokZ">Rok zakupu
+            <span class="field"><input id="rokZ" inputmode="numeric" value="2022"><span class="unit">r.</span></span>
+          </label>
+        </div>
+        <span class="hint">Przy mieszkaniu ze spadku lub darowizny liczy się zwykle rok nabycia przez spadkodawcę lub darczyńcę – do potwierdzenia u doradcy.</span>
+      </fieldset>
+
+      <fieldset>
+        <legend>Koszty sprzedającego</legend>
+        <div class="row">
+          <label for="prow">Prowizja agenta (brutto)
+            <span class="field"><input id="prow" inputmode="decimal" value="2,46"><span class="unit">%</span></span>
+          </label>
+          <label for="nota">Koszty notarialne
+            <span class="field"><input id="nota" inputmode="decimal" value="600"><span class="unit">zł</span></span>
+          </label>
+        </div>
+        <label for="swiad">Świadectwo charakterystyki energetycznej
+          <span class="field"><input id="swiad" inputmode="decimal" value="500"><span class="unit">zł</span></span>
+        </label>
+        <span class="hint">Taksę notarialną i podatek PCC zwykle płaci kupujący. Tu proszę wpisać tylko to, co płaci sprzedający (np. zaświadczenia, wypisy).</span>
+      </fieldset>
+    </form>
+
+    <aside class="sheet" aria-live="polite">
+      <h2>Rozliczenie</h2>
+      <dl class="lines">
+        <div><dt>Cena sprzedaży</dt><dd id="oCena">–</dd></div>
+        <div><dt>Prowizja agenta</dt><dd id="oProw">–</dd></div>
+        <div><dt>Notariusz</dt><dd id="oNota">–</dd></div>
+        <div><dt>Świadectwo energetyczne</dt><dd id="oSwiad">–</dd></div>
+      </dl>
+      <div class="total"><span>Na rękę przed podatkiem</span><strong id="oNetto">–</strong></div>
+      <div id="tax" class="badge"></div>
+      <div class="lead" id="leadBox">
+        <form action='/kalkulator/' id='leadForm' method='POST' name='wynik-kalkulatora'>
+          <input type="hidden" name="form-name" value="wynik-kalkulatora">
+          <input type="hidden" name="wynik" id="leadWynik">
+          <p class="hp"><label>Nie wypełniać: <input name="bot"></label></p>
+          <h3>Wyślę Państwu ten wynik + raport SĄSIEDZI</h3>
+          <p>Bezpłatnie: ceny z aktów notarialnych z Państwa budynku i okolicy – bez nazwisk i numerów mieszkań.</p>
+          <input type="text" name="imie" placeholder="Imię" autocomplete="given-name">
+          <input type="email" name="email" placeholder="E-mail *" required autocomplete="email">
+          <input type="text" name="adres" placeholder="Ulica i nr budynku (do raportu)">
+          <input type="tel" name="telefon" placeholder="Telefon (opcjonalnie)" autocomplete="tel">
+          <label class="zg"><input type="checkbox" name="zgoda" value="tak" required>
+            <span>Wyrażam zgodę na kontakt w sprawie wyniku i raportu. Administratorem danych jest Maciej Styczek, METROHOUSE Wrocław (tel. 572 518 617). Dane służą tylko do odpowiedzi; można je w każdej chwili usunąć na prośbę.</span></label>
+          <button type="submit">Wyślij mi wynik i raport</button>
+        </form>
+        <p class="ok">Dziękuję! Odezwę się wkrótce z wynikiem i raportem. – Maciej Styczek</p>
+      </div>
+      <p class="note">Wyliczenie ma charakter poglądowy i nie jest poradą podatkową. Ostateczną kwotę podatku i możliwość skorzystania z ulgi mieszkaniowej proszę potwierdzić u doradcy podatkowego.</p>
+    </aside>
+  </div>
+
+  <footer>
+    <span class="name">Maciej Styczek</span>
+    <span>METROHOUSE Wrocław</span>
+    <a class="tel" href="tel:+48572518617" style="color:inherit">572 518 617</a>
+  </footer>
+</div>
+
+<div id="cookie" role="dialog" aria-label="Zgoda na cookies"><span>Za Państwa zgodą używam piksela Meta (cookies), żeby mierzyć skuteczność reklam. Bez zgody kalkulator działa tak samo.</span><button class="yes">Akceptuję</button><button class="no">Tylko niezbędne</button></div>
+<script>
+const $=id=>document.getElementById(id);
+const num=v=>{const n=parseFloat(String(v).replace(/\s/g,'').replace(',','.'));return isFinite(n)?n:0};
+const zl=n=>new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN',maximumFractionDigits:0}).format(Math.round(n));
+
+// Pure calculation: 5 years count from the end of the purchase year, so sales from 1 Jan of (rokZ+6) are tax-free.
+function calc(d){
+  const prow=d.cena*d.prowPct/100;
+  const koszty=prow+d.nota+d.swiad;
+  const netto=d.cena-koszty;
+  const wolnyOd=d.rokZ+6;
+  const przed5=d.rokZ>0 && d.rokS<wolnyOd;
+  const wynik=d.cena-koszty-d.zakup; // ujemny = strata
+  const dochod=Math.max(0,wynik);
+  const podatek=przed5?dochod*0.19:0;
+  return {prow,koszty,netto,wolnyOd,przed5,wynik,dochod,podatek,poPodatku:netto-podatek};
+}
+console.assert(calc({cena:650000,prowPct:2,nota:0,swiad:0,zakup:480000,rokZ:2022,rokS:2026}).podatek===(650000-13000-480000)*0.19,'calc');
+
+const rokS=$('rokS'); if(!rokS.value) rokS.value=new Date().getFullYear();
+
+function render(){
+  const d={cena:num($('cena').value),zakup:num($('zakup').value),rokZ:Math.trunc(num($('rokZ').value)),rokS:Math.trunc(num(rokS.value)),
+           prowPct:num($('prow').value),nota:num($('nota').value),swiad:num($('swiad').value)};
+  const r=calc(d);
+  $('oCena').textContent=zl(d.cena);
+  $('oProw').textContent='− '+zl(r.prow);
+  $('oNota').textContent='− '+zl(d.nota);
+  $('oSwiad').textContent='− '+zl(d.swiad);
+  $('oNetto').textContent=zl(r.netto);
+  const t=$('tax');
+  if(!d.rokZ){t.className='badge';t.innerHTML='';return}
+  if(r.przed5){
+    t.className='badge warn';
+    const zysk=r.wynik>0;
+    t.innerHTML=`<span class="bt">⚠ Sprzedaż w ${d.rokS} r. – przed upływem 5 lat: możliwy podatek 19%</span>
+      <div class="free">Bez podatku można sprzedać dopiero od <strong>1 stycznia ${r.wolnyOd} r.</strong></div>
+      <dl class="tx">
+        <div><dt>Cena sprzedaży</dt><dd>${zl(d.cena)}</dd></div>
+        <div><dt>− koszty sprzedaży</dt><dd>− ${zl(r.koszty)}</dd></div>
+        <div><dt>− cena zakupu</dt><dd>− ${zl(d.zakup)}</dd></div>
+        <div class="after"><dt>${zysk?'= Dochód (podstawa podatku)':'= Strata (brak dochodu)'}</dt><dd>${zl(r.wynik)}</dd></div>
+        <div class="tax"><dt>Podatek 19% × ${zl(r.dochod)}</dt><dd>− ${zl(r.podatek)}</dd></div>
+        ${zysk?'':`<p>Sprzedaż bez zysku: podatek 19% liczy się tylko od dochodu, więc przy tych kwotach go nie ma. Pojawi się, gdy cena sprzedaży przekroczy ${zl(d.zakup+r.koszty)}.</p>`}
+        <div class="after"><dt>Na rękę po podatku</dt><dd>${zl(r.poPodatku)}</dd></div>
+      </dl>
+      <p class="small">Podatku można uniknąć w całości lub części, jeśli w ciągu 3 lat przeznaczy Pan/Pani pieniądze na własne cele mieszkaniowe (ulga mieszkaniowa).</p>`;
+  } else {
+    t.className='badge ok';
+    t.innerHTML=`<span class="bt">✓ Minęło 5 lat od końca roku zakupu</span><p>Przy tych danych podatek dochodowy od sprzedaży nie powinien wystąpić.</p>`;
+  }
+}
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));
+render();
+
+// --- Formularz wyniku (Netlify Forms) + piksel Meta po zgodzie ---
+const PIXEL_ID='1480547836740340'; // shortcut: wpisać ID piksela Meta; puste = brak piksela i paska cookies
+let zgoda=null; try{zgoda=localStorage.getItem('cookieZgoda')}catch(e){}
+function pixel(){ if(!PIXEL_ID||window.fbq) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init',PIXEL_ID); fbq('track','PageView'); }
+const ev=(n,std)=>{ if(window.fbq) std?fbq('track',n):fbq('trackCustom',n) };
+if(PIXEL_ID){
+  if(zgoda==='tak') pixel();
+  else if(zgoda!=='nie'){ const c=document.getElementById('cookie'); c.style.display='flex';
+    c.querySelector('.yes').onclick=()=>{try{localStorage.setItem('cookieZgoda','tak')}catch(e){} c.style.display='none'; pixel()};
+    c.querySelector('.no').onclick=()=>{try{localStorage.setItem('cookieZgoda','nie')}catch(e){} c.style.display='none'}; }
+}
+let liczyl=false; document.querySelectorAll('.calc input, form:not(#leadForm) input').forEach(i=>i.addEventListener('input',()=>{ if(!liczyl){liczyl=true; ev('KalkulatorWynik')} }));
+$('leadForm').addEventListener('submit',e=>{ e.preventDefault(); const f=e.target;
+  $('leadWynik').value=`Cena ${$('cena').value} zł, zakup ${$('zakup').value} zł (${$('rokZ').value}), sprzedaż ${rokS.value}; na rękę przed podatkiem ${$('oNetto').textContent}`;
+  fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+   .then(r=>{ if(!r.ok) throw r.status; $('leadBox').classList.add('sent'); ev('Lead',true) })
+   .catch(e=>alert('Nie udało się wysłać (kod: '+(e||'sieć')+'). Proszę zadzwonić: 572 518 617'));
+});
+</script>
+
+
+</body>
+</html>
