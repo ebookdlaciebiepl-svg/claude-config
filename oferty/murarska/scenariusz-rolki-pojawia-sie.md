@@ -24,7 +24,7 @@ Styl: wzorzec „POJAWIA SIĘ” (opis w `scenariusz-rolki-20s.md`) – zdjęcie
 | 16,5–17,3 | Przemiana | jw. + WIZUALIZACJA ARANŻACJI |
 | 17,3–19,5 | Łazienka „po” | jw. |
 | 19,5–24,5 | Plansza danych na przyciemnionym pokoju 1 „przed” | MIESZKANIE WŁASNOŚCIOWE · UL. MURARSKA · Wrocław, Fabryczna · Powierzchnia 42 m² · Pokoje 2 · Piętro 3. (bez windy) · Stan do remontu · Dostępne od zaraz · CENA 430 000 zł (tylko w wersji z ceną) · Zapraszamy na prezentację – proszę zadzwonić lub napisać. |
-| 24,5–27,5 | Plansza końcowa | Logo (`logo-ciemne-tlo.webp`) + baner kontaktowy (`baner-kontakt.webp`) + nieruchomoscibezstresu.netlify.app |
+| 24,5–27,5 | Plansza końcowa | Logo (`logo-ciemne-tlo.webp`) + baner kontaktowy (`baner-kontakt.webp`) + nieruchomosci-bez-stresu.org |
 
 Zdjęcia: `aranzacja/` (opis źródeł i odstępstw od oryginału w `aranzacja/README.md`).
 

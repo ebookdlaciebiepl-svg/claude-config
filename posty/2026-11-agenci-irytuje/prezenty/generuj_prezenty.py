@@ -17,7 +17,7 @@ LOGO = Image.open(REPO / "assets/logo/logo-ciemne-tlo.webp").convert("RGB")
 
 CECHY = ["lnum"]  # cyfry wyrównane: Cormorant domyślnie ma nautyczne („1” jak „I”)
 KONTAKT = ["Maciej Styczek, METROHOUSE Wrocław", "tel. 572 518 617", "mstyczek@metrohouse.pl"]
-STRONA = "nieruchomoscibezstresu.netlify.app"
+STRONA = "nieruchomosci-bez-stresu.org"
 
 KROKI = [
     ("Dokumenty", "Warto zawczasu przygotować odpis księgi wieczystej, zaświadczenia ze spółdzielni lub wspólnoty oraz potwierdzenie braku zadłużenia. Komplet dokumentów budzi zaufanie kupujących."),

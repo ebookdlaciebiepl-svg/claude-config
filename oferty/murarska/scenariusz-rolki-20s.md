@@ -29,7 +29,7 @@ Przeniesienie do marki: twarde cięcia, stały najazd (Ken Burns 1,00 → 1,10),
 | 10,9–13,0 | Łazienka (`image (6).webp`) | DOBRA LOKALIZACJA / zieleń, sklepy, placówki oświatowe / wygodny dojazd do centrum |
 | 13,0–17,0 | Plansza danych na przyciemnionym pokoju 1 | MIESZKANIE WŁASNOŚCIOWE · UL. MURARSKA · Wrocław, Fabryczna · Powierzchnia 42 m² · Pokoje 2 · Piętro 3. (bez windy) · Stan do remontu · Dostępne od zaraz · CENA 430 000 zł |
 | 15,0–17,0 | (ta sama plansza) – CTA | Zapraszamy na prezentację – proszę zadzwonić lub napisać. |
-| 17,0–20,0 | Plansza końcowa | Logo (`logo-ciemne-tlo.webp`) + baner kontaktowy (`baner-kontakt.webp`) + nieruchomoscibezstresu.netlify.app |
+| 17,0–20,0 | Plansza końcowa | Logo (`logo-ciemne-tlo.webp`) + baner kontaktowy (`baner-kontakt.webp`) + nieruchomosci-bez-stresu.org |
 
 ## Dane oferty (1:1)
 
