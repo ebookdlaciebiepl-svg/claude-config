@@ -4,36 +4,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Kalkulator sprzedaży mieszkania – ile zostanie na rękę? | Nieruchomości bez stresu</title>
-<meta name="description" content="Bezpłatny kalkulator: ile zostanie Panu/Pani na rękę po sprzedaży mieszkania we Wrocławiu i czy grozi 19% podatek przed upływem 5 lat. Maciej Styczek, METROHOUSE Wrocław.">
+<meta name="description" content="Bezpłatny kalkulator: ile zostanie Państwu na rękę po sprzedaży mieszkania we Wrocławiu i czy grozi 19% podatek przed upływem 5 lat. Maciej Styczek, METROHOUSE Wrocław.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kalkulator sprzedaży mieszkania – ile zostanie na rękę?">
-<meta property="og:description" content="Prowizja, koszty i możliwy 19% podatek przed upływem 5 lat. Wynik od razu, bez zapisywania danych.">
+<meta property="og:description" content="Prowizja, koszty i możliwy 19% podatek przed upływem 5 lat. Wynik od razu – obliczenia w przeglądarce.">
 <meta property="og:image" content="https://poradnik.nieruchomosci-bez-stresu.org/img/og.jpg">
 <meta property="og:locale" content="pl_PL">
+<link rel="canonical" href="https://nieruchomosci-bez-stresu.org/kalkulator/">
 <link rel="icon" href="/img/logo-180.webp">
-<style>body{margin:0}.back{display:inline-flex;align-items:center;gap:10px;color:#d8b46a;text-decoration:none;font-size:14px}.back img{width:48px;height:48px}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>body{margin:0}.back{display:inline-flex;align-items:center;gap:10px;color:#CEA852;text-decoration:none;font-size:14px}.back img{width:48px;height:48px}</style>
 <style>
-.lead{margin-top:22px;padding:20px;border:2px solid #d8b46a;border-radius:16px;background:rgba(216,180,106,.08)}
-.lead h3{margin:0 0 6px;color:#d8b46a;font-size:19px}.lead p{margin:0 0 12px;font-size:14px;opacity:.9}
-.lead input[type=text],.lead input[type=email],.lead input[type=tel]{width:100%;box-sizing:border-box;margin:0 0 10px;padding:12px;border-radius:10px;border:1px solid #6b5a3a;background:#111;color:#f5eede;font:inherit}
+.lead{margin-top:22px;padding:20px;border:2px solid #CEA852;border-radius:16px;background:rgba(206,168,82,.08)}
+.lead h3{margin:0 0 6px;color:#CEA852;font-size:19px}.lead p{margin:0 0 12px;font-size:14px;opacity:.9}
+.lead input[type=text],.lead input[type=email],.lead input[type=tel]{width:100%;box-sizing:border-box;margin:0 0 10px;padding:12px;border-radius:10px;border:1px solid #6b5a3a;background:#0d0808;color:#f5eede;font:inherit}
 .lead .zg{display:flex;gap:8px;align-items:flex-start;font-size:12px;line-height:1.4;margin:4px 0 12px}
-.lead button{width:100%;padding:14px;border:0;border-radius:999px;background:#ffcd00;color:#0b0b0b;font-weight:800;font-size:16px;cursor:pointer}
-.lead .ok{display:none;color:#d8b46a;font-weight:700}.lead.sent form{display:none}.lead.sent .ok{display:block}
+.lead button{width:100%;padding:14px;border:0;border-radius:999px;background:#CEA852;color:#140C0C;font-weight:800;font-size:16px;cursor:pointer}
+.lead .ok{display:none;color:#CEA852;font-weight:700}.lead.sent form{display:none}.lead.sent .ok{display:block}
 .hp{position:absolute;left:-9999px}
-#cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 16px;border:1px solid #d8b46a;border-radius:14px;background:#0b0b0b;color:#f5eede;font-size:13px;max-width:720px;margin:0 auto}
-#cookie button{padding:9px 16px;border-radius:999px;border:1px solid #d8b46a;background:transparent;color:#f5eede;cursor:pointer}#cookie .yes{background:#d8b46a;color:#0b0b0b;font-weight:700}
+#cookie{position:fixed;left:8px;right:8px;bottom:8px;z-index:50;display:none;gap:6px 10px;align-items:center;flex-wrap:wrap;padding:8px 12px;border:1px solid #CEA852;border-radius:12px;background:#140C0C;color:#f5eede;font-size:12px;line-height:1.35;max-width:720px;margin:0 auto}
+#cookie span{flex:1 1 260px}#cookie a{color:#F6DB8D}
+#cookie button{padding:6px 12px;border-radius:999px;border:1px solid #CEA852;background:transparent;color:#f5eede;font:inherit;cursor:pointer}#cookie .yes{background:#CEA852;color:#140C0C;font-weight:700}
+.lead .zg a,.note a,footer a{color:#F6DB8D}
 </style>
 </head>
 <body>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: one column of form "ledger" + a sticky result sheet beside it on wide screens; single dark-gold look by design */
 :root{
-  --bg:#0b0a08; --panel:#15130f; --line:#3a3226; --fg:#efe6d2; --muted:#a89a7e;
-  --gold:#d8b46a; --gold2:#f3d79a; --warn:#e8a25a; --ok:#9cc98a;
+  --bg:#140C0C; --panel:#1d1413; --line:#3d2f22; --fg:#efe6d2; --muted:#a89a7e;
+  --gold:#CEA852; --gold2:#F6DB8D; --golddk:#AE8936; --warn:#e8a25a; --ok:#9cc98a;
   --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
-  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -41,7 +45,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px
 .wrap{max-width:1040px;margin:0 auto;padding-block:32px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 header{display:flex;flex-direction:column;gap:6px;margin-bottom:28px;border-bottom:1px solid var(--line);padding-bottom:20px}
 .eyebrow{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:600}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.05;margin:0;color:var(--gold2);text-wrap:balance}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.08;margin:0;color:var(--gold2);text-transform:uppercase;letter-spacing:.03em;text-wrap:balance}
 header p{margin:0;color:var(--muted);max-width:62ch}
 .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:start}
 @media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}}
@@ -52,7 +56,7 @@ legend{font-family:var(--display);font-size:22px;color:var(--gold);font-weight:6
 @media (max-width:460px){.row{grid-template-columns:minmax(0,1fr)}}
 label{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--muted);min-width:0}
 .field{display:flex;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:0 12px}
-.field:focus-within{border-color:var(--gold);box-shadow:0 0 0 2px rgba(216,180,106,.25)}
+.field:focus-within{border-color:var(--gold);box-shadow:0 0 0 2px rgba(206,168,82,.25)}
 input{flex:1;min-width:0;background:transparent;border:0;color:var(--fg);font:500 17px var(--body);padding:11px 0;font-variant-numeric:tabular-nums;outline:none}
 .unit{color:var(--muted);font-size:13px;padding-left:8px}
 .hint{font-size:12px;color:var(--muted)}
@@ -92,8 +96,8 @@ footer .tel{font-variant-numeric:tabular-nums;letter-spacing:.04em;user-select:a
   <a class="back" href="/"><img src="/logo.webp" alt="Nieruchomości bez stresu – logo" width="48" height="48">← Strona główna</a>
   <header>
     <span class="eyebrow">Wrocław · sprzedaż mieszkania</span>
-    <h1>Ile zostanie Panu / Pani na rękę?</h1>
-    <p>Proszę wpisać kwoty ze swojej transakcji. Wynik liczy się od razu. Poniżej są przykładowe wartości do zmiany.</p>
+    <h1>Ile zostanie Państwu na rękę?</h1>
+    <p>Proszę wpisać kwoty ze swojej transakcji. Wynik liczy się od razu. Poniżej są przykładowe wartości do zmiany. Obliczenia odbywają się w Państwa przeglądarce – wpisane kwoty nie są nigdzie wysyłane, dopóki nie prześlą Państwo formularza z wynikiem (<a href="/polityka-prywatnosci/" style="color:var(--gold2)">polityka prywatności</a>).</p>
   </header>
 
   <div class="grid">
@@ -149,21 +153,21 @@ footer .tel{font-variant-numeric:tabular-nums;letter-spacing:.04em;user-select:a
       <div class="total"><span>Na rękę przed podatkiem</span><strong id="oNetto">–</strong></div>
       <div id="tax" class="badge"></div>
       <div class="lead" id="leadBox">
-        <form action='/kalkulator/' id='leadForm' method='POST' name='wynik-kalkulatora'>
+        <form action='/kalkulator/' id='leadForm' method='POST' name='wynik-kalkulatora' data-netlify="true" netlify-honeypot="bot">
           <input type="hidden" name="form-name" value="wynik-kalkulatora">
           <input type="hidden" name="wynik" id="leadWynik">
           <p class="hp"><label>Nie wypełniać: <input name="bot"></label></p>
-          <h3>Wyślę Państwu ten wynik + raport SĄSIEDZI</h3>
+          <h3>Prześlemy Państwu ten wynik + raport SĄSIEDZI</h3>
           <p>Bezpłatnie: ceny z aktów notarialnych z Państwa budynku i okolicy – bez nazwisk i numerów mieszkań.</p>
           <input type="text" name="imie" placeholder="Imię" autocomplete="given-name">
           <input type="email" name="email" placeholder="E-mail *" required autocomplete="email">
           <input type="text" name="adres" placeholder="Ulica i nr budynku (do raportu)">
           <input type="tel" name="telefon" placeholder="Telefon (opcjonalnie)" autocomplete="tel">
           <label class="zg"><input type="checkbox" name="zgoda" value="tak" required>
-            <span>Wyrażam zgodę na kontakt w sprawie wyniku i raportu. Administratorem danych jest Maciej Styczek, METROHOUSE Wrocław (tel. 572 518 617). Dane służą tylko do odpowiedzi; można je w każdej chwili usunąć na prośbę.</span></label>
-          <button type="submit">Wyślij mi wynik i raport</button>
+            <span>Wyrażam zgodę na kontakt w sprawie wyniku i raportu. Administratorem danych jest Quality&amp;Print sp. z o.o. (kontakt: mstyczek@metrohouse.pl, tel. 572 518 617). Dane służą tylko do odpowiedzi; można je w każdej chwili usunąć na prośbę. Szczegóły: <a href="/polityka-prywatnosci/" target="_blank" rel="noopener">Polityka prywatności</a>.</span></label>
+          <button type="submit">Proszę o wynik i raport</button>
         </form>
-        <p class="ok">Dziękuję! Odezwę się wkrótce z wynikiem i raportem. – Maciej Styczek</p>
+        <p class="ok">Dziękujemy! Wkrótce prześlemy Państwu wynik i raport. – Maciej Styczek</p>
       </div>
       <p class="note">Wyliczenie ma charakter poglądowy i nie jest poradą podatkową. Ostateczną kwotę podatku i możliwość skorzystania z ulgi mieszkaniowej proszę potwierdzić u doradcy podatkowego.</p>
     </aside>
@@ -173,10 +177,11 @@ footer .tel{font-variant-numeric:tabular-nums;letter-spacing:.04em;user-select:a
     <span class="name">Maciej Styczek</span>
     <span>METROHOUSE Wrocław</span>
     <a class="tel" href="tel:+48572518617" style="color:inherit">572 518 617</a>
+    <a href="/polityka-prywatnosci/">Polityka prywatności</a>
   </footer>
 </div>
 
-<div id="cookie" role="dialog" aria-label="Zgoda na cookies"><span>Za Państwa zgodą używam piksela Meta (cookies), żeby mierzyć skuteczność reklam. Bez zgody kalkulator działa tak samo.</span><button class="yes">Akceptuję</button><button class="no">Tylko niezbędne</button></div>
+<div id="cookie" role="dialog" aria-label="Zgoda na cookies"><span>Za Państwa zgodą używamy piksela Meta (cookies), żeby mierzyć skuteczność reklam. Bez zgody kalkulator działa tak samo. <a href="/polityka-prywatnosci/">Polityka prywatności</a></span><button class="yes">Akceptuję</button><button class="no">Tylko niezbędne</button></div>
 <script>
 const $=id=>document.getElementById(id);
 const num=v=>{const n=parseFloat(String(v).replace(/\s/g,'').replace(',','.'));return isFinite(n)?n:0};
@@ -223,7 +228,7 @@ function render(){
         ${zysk?'':`<p>Sprzedaż bez zysku: podatek 19% liczy się tylko od dochodu, więc przy tych kwotach go nie ma. Pojawi się, gdy cena sprzedaży przekroczy ${zl(d.zakup+r.koszty)}.</p>`}
         <div class="after"><dt>Na rękę po podatku</dt><dd>${zl(r.poPodatku)}</dd></div>
       </dl>
-      <p class="small">Podatku można uniknąć w całości lub części, jeśli w ciągu 3 lat przeznaczy Pan/Pani pieniądze na własne cele mieszkaniowe (ulga mieszkaniowa).</p>`;
+      <p class="small">Podatku można uniknąć w całości lub części, jeśli w ciągu 3 lat przeznaczą Państwo pieniądze na własne cele mieszkaniowe (ulga mieszkaniowa).</p>`;
   } else {
     t.className='badge ok';
     t.innerHTML=`<span class="bt">✓ Minęło 5 lat od końca roku zakupu</span><p>Przy tych danych podatek dochodowy od sprzedaży nie powinien wystąpić.</p>`;
@@ -241,9 +246,9 @@ function pixel(){ if(!PIXEL_ID||window.fbq) return;
 const ev=(n,std)=>{ if(window.fbq) std?fbq('track',n):fbq('trackCustom',n) };
 if(PIXEL_ID){
   if(zgoda==='tak') pixel();
-  else if(zgoda!=='nie'){ const c=document.getElementById('cookie'); c.style.display='flex';
-    c.querySelector('.yes').onclick=()=>{try{localStorage.setItem('cookieZgoda','tak')}catch(e){} c.style.display='none'; pixel()};
-    c.querySelector('.no').onclick=()=>{try{localStorage.setItem('cookieZgoda','nie')}catch(e){} c.style.display='none'}; }
+  else if(zgoda!=='nie'){ const c=document.getElementById('cookie'); c.style.display='flex'; document.body.style.paddingBottom=(c.offsetHeight+24)+'px'; // pasek nie zasłania końca treści
+    c.querySelector('.yes').onclick=()=>{try{localStorage.setItem('cookieZgoda','tak')}catch(e){} c.style.display='none'; document.body.style.paddingBottom=''; pixel()};
+    c.querySelector('.no').onclick=()=>{try{localStorage.setItem('cookieZgoda','nie')}catch(e){} c.style.display='none'; document.body.style.paddingBottom=''}; }
 }
 let liczyl=false; document.querySelectorAll('.calc input, form:not(#leadForm) input').forEach(i=>i.addEventListener('input',()=>{ if(!liczyl){liczyl=true; ev('KalkulatorWynik')} }));
 $('leadForm').addEventListener('submit',e=>{ e.preventDefault(); const f=e.target;
