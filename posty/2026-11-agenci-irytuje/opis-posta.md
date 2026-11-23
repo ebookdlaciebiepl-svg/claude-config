@@ -9,6 +9,7 @@ Co najbardziej irytuje Państwa w agentach nieruchomości? Cisza po pierwszym te
 Prezent do wyboru: proszę dopisać w komentarzu KALKULATOR (sprawdzą Państwo, ile może być warta Państwa nieruchomość) lub PORADNIK (jak przygotować mieszkanie do sprzedaży) – prześlemy go w wiadomości prywatnej.
 
 KALKULATOR – sprawdzą Państwo orientacyjną wartość mieszkania: https://nieruchomosci-bez-stresu.org/kalkulator/
+PORADNIK – jak przygotować mieszkanie do sprzedaży (PDF do pobrania): https://drive.google.com/file/d/1zKwKIiDH0ufC36q2qwKmiGK_dm-0oyIV/view?usp=drivesdk
 
 Maciej Styczek, METROHOUSE Wrocław
 tel. 572 518 617
