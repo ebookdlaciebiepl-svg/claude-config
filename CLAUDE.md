@@ -71,9 +71,10 @@ Układ planowany; katalogi będą tworzone w miarę dodawania zasobów.
 
 ## Strona internetowa
 
-- Adres: https://nieruchomoscibezstresu.netlify.app (hosting Netlify, plan darmowy).
+- Adres główny: https://nieruchomosci-bez-stresu.org (hosting Netlify). Zawiera kalkulator (https://nieruchomosci-bez-stresu.org/kalkulator/) i poradnik.
+- Stara wizytówka https://nieruchomoscibezstresu.netlify.app – wersja zapasowa, do przekierowania/wygaszenia.
 - Zawartość: informacje o marce, sekcje „O nas” i „Co zyskują Państwo”, kontakt z przyciskami telefonu i e-maila (dane z sekcji „Baner kontaktowy”).
-- Używaj tego adresu w opisach profili (Instagram, TikTok, Facebook) i w CTA rolek.
+- W opisach profili (Instagram, TikTok, Facebook) i w CTA rolek używaj wyłącznie adresu https://nieruchomosci-bez-stresu.org.
 - Własna domena (np. nieruchomoscibezstresu.pl) – do decyzji; można ją podłączyć później w Netlify.
 
 ## Rolki

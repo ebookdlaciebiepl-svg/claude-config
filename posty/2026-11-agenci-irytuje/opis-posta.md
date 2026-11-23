@@ -14,6 +14,6 @@ PORADNIK – jak przygotować mieszkanie do sprzedaży (PDF do pobrania): https:
 Maciej Styczek, METROHOUSE Wrocław
 tel. 572 518 617
 mstyczek@metrohouse.pl
-https://nieruchomoscibezstresu.netlify.app
+https://nieruchomosci-bez-stresu.org
 
 #nieruchomosci #wroclaw #agentnieruchomosci #sprzedazmieszkania #nieruchomoscibezstresu

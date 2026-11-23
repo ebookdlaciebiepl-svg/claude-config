@@ -303,7 +303,7 @@ def s5():
     d.rounded_rectangle((M, y, W - M, H - M), radius=24, fill=DARK)
     lines = [('Maciej Styczek, METROHOUSE Wrocław', M700, GOLD),
              ('tel. 572 518 617 · mstyczek@metrohouse.pl', M500, WHITE),
-             ('nieruchomoscibezstresu.netlify.app', M700, GOLD)]
+             ('nieruchomosci-bez-stresu.org', M700, GOLD)]
     inner = maxw - 60
     sizes = []
     for t, p, _ in lines:
