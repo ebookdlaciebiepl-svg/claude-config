@@ -2,7 +2,7 @@
 # gradient pionowy + ziarno, teksty na półprzezroczystych kartach, złote akcenty.
 # Baza: posty/2026-11-niedziele-prezentacje/generuj_karuzele.py (hexrgb/lum/contrast, fit, logo, plansza końcowa).
 # Uruchom: python3 posty/karuzele-agent/generuj_karuzele.py [ścieżka-siatki.jpg]
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import numpy as np
 import os
 import re
@@ -16,6 +16,7 @@ M700 = os.path.join(FD, 'montserrat-700.ttf')
 LOGO_CIEMNE = os.path.join(REPO, 'assets', 'logo', 'logo-ciemne-tlo.webp')
 LOGO_JASNE = os.path.join(REPO, 'assets', 'logo', 'logo-jasne-tlo.webp')
 BANER = os.path.join(REPO, 'assets', 'baner', 'baner-kontakt.webp')
+PORTRET = os.path.join(REPO, 'assets', 'portret', 'maciej-portret.jpg')
 OUT = os.path.dirname(os.path.abspath(__file__))
 
 W, H, M = 1080, 1350, 80
@@ -158,6 +159,34 @@ def logo(size, under):
     mask = mask.resize((size, size), Image.LANCZOS)
     alpha = Image.composite(im.getchannel('A'), Image.new('L', (size, size), 0), mask)
     return im.convert('RGB'), alpha
+
+
+def portrait(img, cx, cy, dia, ring=7):
+    """Okrągły portret w złotej obwódce (gradient marki) z delikatnym cieniem; zwraca bbox."""
+    x0, y0 = int(cx - dia / 2), int(cy - dia / 2)
+    sh = Image.new('L', (W, H), 0)
+    ImageDraw.Draw(sh).ellipse((x0, y0 + 8, x0 + dia, y0 + dia + 8), fill=150)
+    img.paste((0, 0, 0), (0, 0), sh.filter(ImageFilter.GaussianBlur(12)))
+    gold_shape(img, (x0, y0, x0 + dia, y0 + dia))
+    src = Image.open(PORTRET).convert('RGB')
+    di = dia - 2 * ring
+    assert di <= src.width * 1.3, 'portret powiększony ponad 1,3x'
+    ph = src.resize((di, di), Image.LANCZOS).filter(ImageFilter.UnsharpMask(1, 30, 2))
+    img.paste(ph, (x0 + ring, y0 + ring), rmask(di, di, di // 2))
+    return x0, y0, x0 + dia, y0 + dia
+
+
+def signature(img, d, x, cy, card_x0, card_x1=None):
+    """Podpis „Maciej Styczek / agent nieruchomości · Wrocław” na ciemnej karcie (kontrast na jasnym gradiencie)."""
+    fn, fs = F(SERIF, 50), F(M700, 23)
+    name, role = 'Maciej Styczek', 'agent nieruchomości · Wrocław'
+    hn, hs, gap = 50, 26, 12
+    top = cy - (hn + gap + hs) / 2
+    x1 = card_x1 if card_x1 is not None else x + max(tw(fn, name), tw(fs, role)) + 32
+    card(img, (card_x0, top - 26, x1, top + hn + gap + hs + 26), r=34)
+    bn, bs = d.textbbox((0, 0), name, font=fn, features=feat(fn)), d.textbbox((0, 0), role, font=fs)
+    txts(img, d, [((x, top - bn[1]), name, fn, WHITE), ((x, top + hn + gap - bs[1]), role, fs, GOLD_L)])
+    return x1
 
 
 # ---------- ikony zamiast emoji (font nie ma emoji) ----------
@@ -349,7 +378,7 @@ def render(k, n, spec):
     kind = spec[0]
     if kind == 'hook':
         _, head, sub, cta, icon = spec
-        top = header(img, d, n, k) + 60
+        top = header(img, d, n, k) + 40
         # „przesuń” w ciemnej pigułce, prawy dolny róg
         fs = F(M700, 28)
         pw, ph = int(tw(fs, 'przesuń')) + 120, 58
@@ -358,15 +387,27 @@ def render(k, n, spec):
         bb = d.textbbox((0, 0), 'przesuń', font=fs)
         txt(img, d, (x0 + 28, y0 + (ph - (bb[3] - bb[1])) / 2 - bb[1]), 'przesuń', fs, WHITE)
         arrow_right(d, x0 + pw - 76, y0 + ph / 2, 46, WHITE)
-        stack(img, d, [[Hd(head, 108, 60, 330), G(34), R(), G(36), T(sub, M700, 54, 36), G(48), CTA(cta, icon)]],
-              top, y0 - 40)
+        dia = 214
+        pcx, pcy = M + dia / 2, H - M - dia / 2
+        sx1 = signature(img, d, M + dia + 24, pcy, pcx)
+        assert sx1 <= x0 - 20, 'podpis nachodzi na „przesuń”'
+        portrait(img, pcx, pcy, dia)
+        bottom = H - M - dia - 36
+        rest = [G(30), R(), G(32), T(sub, M700, 54, 36), G(40), CTA(cta, icon)]
+        stack(img, d, [[Hd(head, 108, 60, min(330, bottom - top - 2 * PAD - sum(b[0] for b in rest)))] + rest],
+              top, bottom)
     elif kind == 'end':
         _, q, sub = spec
-        top = header(img, d, n, k, corner_logo=False) + 50
+        header(img, d, n, k, corner_logo=False)
+        dia = 232
+        pcx, pcy = W - M - dia / 2, M + dia / 2
+        signature(img, d, M + 36, pcy + 34, M, pcx)
+        portrait(img, pcx, pcy, dia)
+        top = M + dia + 36
         cy0 = endboard(img, d)
-        blocks = [Hd(q, 84, 50, 260)]
-        if sub:
-            blocks += [G(30), R(), G(32), T(sub, M500, 46, 30)]
+        rest = [G(30), R(), G(32), T(sub, M500, 46, 30)] if sub else []
+        # nagłówek dostaje tyle miejsca, ile zostaje między portretem a planszą końcową
+        blocks = [Hd(q, 84, 50, min(260, cy0 - 40 - top - 2 * PAD - sum(b[0] for b in rest)))] + rest
         stack(img, d, [blocks], top, cy0 - 40)
     else:
         top = header(img, d, n, k) + 60
