@@ -6,6 +6,8 @@ Grafiki: `slajd-1.jpg` … `slajd-5.jpg` (1080x1350, 4:5).
 
 Co najbardziej irytuje Państwa w agentach nieruchomości? Cisza po pierwszym telefonie, zdjęcia oderwane od rzeczywistości, a może prowizja, o której dowiadują się Państwo na końcu? Proszę napisać w komentarzu – każdą odpowiedź traktujemy poważnie.
 
+👉 Więcej porad: https://nieruchomosci-bez-stresu.org
+
 Prezent do wyboru: proszę dopisać w komentarzu KALKULATOR (sprawdzą Państwo, ile może być warta Państwa nieruchomość) lub PORADNIK (jak przygotować mieszkanie do sprzedaży) – prześlemy go w wiadomości prywatnej.
 
 KALKULATOR – sprawdzą Państwo orientacyjną wartość mieszkania: https://nieruchomosci-bez-stresu.org/kalkulator/
