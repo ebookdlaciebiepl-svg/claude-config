@@ -161,32 +161,39 @@ def logo(size, under):
     return im.convert('RGB'), alpha
 
 
-def portrait(img, cx, cy, dia, ring=7):
-    """Okrągły portret w złotej obwódce (gradient marki) z delikatnym cieniem; zwraca bbox."""
+def portrait(img, cx, cy, dia, ring=9):
+    """Okrągły portret jak w grafice wzorcowej: ciemny pierścień (#2A2418 -> #140C0C, 5% średnicy),
+    złota obwódka (gradient marki), zdjęcie; delikatny cień. Zwraca bbox."""
     x0, y0 = int(cx - dia / 2), int(cy - dia / 2)
     sh = Image.new('L', (W, H), 0)
     ImageDraw.Draw(sh).ellipse((x0, y0 + 8, x0 + dia, y0 + dia + 8), fill=150)
     img.paste((0, 0, 0), (0, 0), sh.filter(ImageFilter.GaussianBlur(12)))
-    gold_shape(img, (x0, y0, x0 + dia, y0 + dia))
+    dk = round(dia * 0.05)
+    r = np.hypot(*np.mgrid[-1:1:dia * 1j, -1:1:dia * 1j])[..., None]   # 0 w środku, 1 na brzegu
+    t = np.clip((r - (1 - 2 * dk / dia)) / (2 * dk / dia), 0, 1)
+    ring_img = Image.fromarray((np.array(hexrgb('#2A2418')) * (1 - t) + np.array(DARK) * t).astype('uint8'))
+    img.paste(ring_img, (x0, y0), rmask(dia, dia, dia // 2))
+    gold_shape(img, (x0 + dk, y0 + dk, x0 + dia - dk, y0 + dia - dk))
     src = Image.open(PORTRET).convert('RGB')
-    di = dia - 2 * ring
+    di = dia - 2 * dk - 2 * ring
     assert di <= src.width * 1.3, 'portret powiększony ponad 1,3x'
     ph = src.resize((di, di), Image.LANCZOS).filter(ImageFilter.UnsharpMask(1, 30, 2))
-    img.paste(ph, (x0 + ring, y0 + ring), rmask(di, di, di // 2))
+    img.paste(ph, (x0 + dk + ring, y0 + dk + ring), rmask(di, di, di // 2))
     return x0, y0, x0 + dia, y0 + dia
 
 
 def signature(img, d, x, cy, card_x0, card_x1=None):
     """Podpis „Maciej Styczek / agent nieruchomości · Wrocław” na ciemnej karcie (kontrast na jasnym gradiencie)."""
-    fn, fs = F(SERIF, 50), F(M700, 23)
+    fn, fs = F(SERIF, 50), F(M700, 26)
     name, role = 'Maciej Styczek', 'agent nieruchomości · Wrocław'
-    hn, hs, gap = 50, 26, 12
+    hn, hs, gap = 50, 28, 12
     top = cy - (hn + gap + hs) / 2
     x1 = card_x1 if card_x1 is not None else x + max(tw(fn, name), tw(fs, role)) + 32
-    card(img, (card_x0, top - 26, x1, top + hn + gap + hs + 26), r=34)
+    box = (card_x0, top - 26, x1, top + hn + gap + hs + 26)
+    card(img, box, r=34)
     bn, bs = d.textbbox((0, 0), name, font=fn, features=feat(fn)), d.textbbox((0, 0), role, font=fs)
     txts(img, d, [((x, top - bn[1]), name, fn, WHITE), ((x, top + hn + gap - bs[1]), role, fs, GOLD_L)])
-    return x1
+    return box
 
 
 # ---------- ikony zamiast emoji (font nie ma emoji) ----------
@@ -358,7 +365,7 @@ def endboard(img, d):
     ban = Image.open(BANER).convert('RGB')
     bw = W - 2 * M - 2 * pad
     bh = round(bw * ban.height / ban.width)  # proporcje banera zachowane
-    ls = 170
+    ls = 150
     fu = F(M700, 34)
     url = 'nieruchomosci-bez-stresu.org'
     card_h = pad + ls + 24 + bh + 26 + 44 + pad
@@ -378,7 +385,7 @@ def render(k, n, spec):
     kind = spec[0]
     if kind == 'hook':
         _, head, sub, cta, icon = spec
-        top = header(img, d, n, k) + 40
+        top = header(img, d, n, k) + 24
         # „przesuń” w ciemnej pigułce, prawy dolny róg
         fs = F(M700, 28)
         pw, ph = int(tw(fs, 'przesuń')) + 120, 58
@@ -387,28 +394,29 @@ def render(k, n, spec):
         bb = d.textbbox((0, 0), 'przesuń', font=fs)
         txt(img, d, (x0 + 28, y0 + (ph - (bb[3] - bb[1])) / 2 - bb[1]), 'przesuń', fs, WHITE)
         arrow_right(d, x0 + pw - 76, y0 + ph / 2, 46, WHITE)
-        dia = 214
+        dia = 260
         pcx, pcy = M + dia / 2, H - M - dia / 2
-        sx1 = signature(img, d, M + dia + 24, pcy, pcx)
-        assert sx1 <= x0 - 20, 'podpis nachodzi na „przesuń”'
+        sb = signature(img, d, M + dia + 24, pcy - 20, pcx)
+        assert sb[3] <= y0 - 12 or sb[2] <= x0 - 20, 'podpis nachodzi na „przesuń”'
         portrait(img, pcx, pcy, dia)
-        bottom = H - M - dia - 36
-        rest = [G(30), R(), G(32), T(sub, M700, 54, 36), G(40), CTA(cta, icon)]
+        bottom = H - M - dia - 30
+        rest = [G(24), R(), G(26), T(sub, M700, 54, 36), G(32), CTA(cta, icon)]
         stack(img, d, [[Hd(head, 108, 60, min(330, bottom - top - 2 * PAD - sum(b[0] for b in rest)))] + rest],
               top, bottom)
     elif kind == 'end':
         _, q, sub = spec
         header(img, d, n, k, corner_logo=False)
-        dia = 232
+        dia = 280
         pcx, pcy = W - M - dia / 2, M + dia / 2
-        signature(img, d, M + 36, pcy + 34, M, pcx)
+        signature(img, d, M + 36, pcy + 30, M, pcx)
         portrait(img, pcx, pcy, dia)
-        top = M + dia + 36
+        top = M + dia + 28
         cy0 = endboard(img, d)
-        rest = [G(30), R(), G(32), T(sub, M500, 46, 30)] if sub else []
+        # podpis pod pytaniem w jednej linii – miejsce na większy nagłówek
+        rest = [G(22), R(), G(24), T(sub, M500, 46, 30, maxh=int(46 * 1.3))] if sub else []
         # nagłówek dostaje tyle miejsca, ile zostaje między portretem a planszą końcową
-        blocks = [Hd(q, 84, 50, min(260, cy0 - 40 - top - 2 * PAD - sum(b[0] for b in rest)))] + rest
-        stack(img, d, [blocks], top, cy0 - 40)
+        blocks = [Hd(q, 84, 50, min(260, cy0 - 28 - top - 2 * PAD - sum(b[0] for b in rest)))] + rest
+        stack(img, d, [blocks], top, cy0 - 28)
     else:
         top = header(img, d, n, k) + 60
         stack(img, d, spec[1], top, H - M)
