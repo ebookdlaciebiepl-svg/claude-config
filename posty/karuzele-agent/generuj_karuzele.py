@@ -432,6 +432,7 @@ def mit_fakt(mit, fakt):
                       [P('FAKT', 'fakt'), G(30), T(fakt, M700, 50, 32)]])
 
 
+LINK = '👉 Więcej porad: https://nieruchomosci-bez-stresu.org'
 BASE_TAGS = '#nieruchomoscibezstresu #nieruchomosciwroclaw #agentnieruchomosci #metrohouse #sprzedazmieszkania #kupnomieszkania #wroclaw'
 STOPKA = '''Maciej Styczek | METROHOUSE Wrocław
 📞 572 518 617 | ✉️ mstyczek@metrohouse.pl
@@ -480,6 +481,7 @@ KARUZELE = [
          opis='Pierwsze wrażenie kupujący mają ze zdjęć. Krótka lista, którą można zrobić jeszcze dziś. '
               'Poradnik PDF wyślę każdemu, kto napisze komentarz „PORADNIK”.',
          pytanie='Chcą Państwo pełną listę? Proszę napisać „PORADNIK” 👇',
+         link='👉 Poradnik i kalkulator: https://nieruchomosci-bez-stresu.org',
          tagi='#homestaging #zdjecianieruchomosci'),
     dict(dir='04-wylacznosc-mity', seed=4, c=('#123D2E', '#1F7A55'),
          tytul='Umowa na wyłączność – mity i fakty',
@@ -525,7 +527,7 @@ if __name__ == '__main__':
             im.save(os.path.join(out, f'slajd-{n}.jpg'), quality=92)
             all_slides.append(im)
         with open(os.path.join(out, 'opis-posta.md'), 'w', encoding='utf-8') as fh:
-            fh.write(f"{k['opis']}\n\n{k['pytanie']}\n\n{STOPKA}\n\n{BASE_TAGS} {k['tagi']}\n")
+            fh.write(f"{k['opis']}\n\n{k.get('link', LINK)}\n\n{k['pytanie']}\n\n{STOPKA}\n\n{BASE_TAGS} {k['tagi']}\n")
         print(k['dir'], 'ok')
     worst = min(CHECKS)
     print(f'sprawdzonych tekstów: {len(CHECKS)}, najniższy kontrast {worst[0]:.2f}:1 ({worst[1]!r})')
