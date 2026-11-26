@@ -1,5 +1,7 @@
 Wybór agenta to decyzja o pieniądzach i czasie. Te pytania pomogą ją podjąć spokojnie.
 
+👉 Więcej porad: https://nieruchomosci-bez-stresu.org
+
 5 pytań, które warto zadać. Które zadaliby Państwo jako pierwsze? 👇
 
 Maciej Styczek | METROHOUSE Wrocław

@@ -1,5 +1,7 @@
 Pierwsze wrażenie kupujący mają ze zdjęć. Krótka lista, którą można zrobić jeszcze dziś. Poradnik PDF wyślę każdemu, kto napisze komentarz „PORADNIK”.
 
+👉 Poradnik i kalkulator: https://nieruchomosci-bez-stresu.org
+
 Chcą Państwo pełną listę? Proszę napisać „PORADNIK” 👇
 
 Maciej Styczek | METROHOUSE Wrocław

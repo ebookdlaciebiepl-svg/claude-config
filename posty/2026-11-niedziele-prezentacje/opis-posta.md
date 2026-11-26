@@ -1,5 +1,7 @@
 Prezentacja mieszkania w niedzielę? Czasem tak. Ale nie jako standard.
 
+👉 Więcej porad: https://nieruchomosci-bez-stresu.org
+
 Niedziele i święta staram się zostawiać dla rodziny. Nie zawsze się udaje – gdy klientom bardzo zależy na konkretnym terminie, dopasowuję się.
 
 Elastyczność to część tej pracy: spotkania wieczorem, w soboty, w terminach dopasowanych do Państwa. Nie oznacza to jednak dostępności 7 dni w tygodniu. Prawie zawsze da się znaleźć termin dobry dla obu stron.

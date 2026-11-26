@@ -1,5 +1,7 @@
 Komplet dokumentów to szybsza sprzedaż i mniej stresu u notariusza. Lista do zapisania – szczegóły zależą od rodzaju własności, chętnie sprawdzę je indywidualnie.
 
+👉 Więcej porad: https://nieruchomosci-bez-stresu.org
+
 Te dokumenty warto mieć wcześniej. Proszę zapisać na później 🔖
 
 Maciej Styczek | METROHOUSE Wrocław

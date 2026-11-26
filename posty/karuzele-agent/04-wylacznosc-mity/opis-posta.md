@@ -1,5 +1,7 @@
 Wokół umowy na wyłączność narosło wiele mitów. Krótko o tym, jak to wygląda w praktyce.
 
+👉 Więcej porad: https://nieruchomosci-bez-stresu.org
+
 Umowa na wyłączność: pułapka czy korzyść? Jakie mają Państwo zdanie? 👇
 
 Maciej Styczek | METROHOUSE Wrocław
